@@ -1,7 +1,5 @@
-import schedule
-import time
 import smtplib
-import os 
+import os
 from email.mime.text import MIMEText
 from bs4 import BeautifulSoup
 import requests
@@ -31,7 +29,7 @@ def job_search():
 def send_email(body):
     sender = "rellaramu769@gmail.com"
     receiver = "bhooshrajusandhyarani@gmail.com"
-    password = os.getenv("EMAIL_PASSWORD") 
+    password = os.getenv("EMAIL_PASSWORD")
 
     msg = MIMEText(body)
     msg['Subject'] = "Daily Job Listings - Health Claims"
@@ -42,6 +40,5 @@ def send_email(body):
         server.login(sender, password)
         server.send_message(msg)
 
-# Scheduled for 06:30 UTC (which is 12:00 PM IST)
-schedule.every().day.at("06:30").do(job_search)
+# Call the function directly (GitHub Actions handles scheduling)
 job_search()

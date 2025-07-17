@@ -44,7 +44,4 @@ def send_email(body):
 
 # Scheduled for 06:30 UTC (which is 12:00 PM IST)
 schedule.every().day.at("06:30").do(job_search)
-
-while True:
-    schedule.run_pending()
-    time.sleep(60)
+job_search()

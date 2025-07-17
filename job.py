@@ -30,7 +30,7 @@ def job_search():
 def send_email(body):
     sender = "rellaramu769@gmail.com"
     receiver = "bhooshrajusandhyarani@gmail.com"
-    password = "your_new_app_password_here"  # Replace with new app password
+  password = "wbce ubjo fhjf xftp" # Replace with new app password
 
     msg = MIMEText(body)
     msg['Subject'] = "Daily Job Listings - Health Claims"

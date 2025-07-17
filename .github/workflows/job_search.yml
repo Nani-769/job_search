@@ -27,4 +27,4 @@ jobs:
         env:
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
         run: |
-          python job_search.py
+          python job.py

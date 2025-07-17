@@ -28,8 +28,9 @@ def job_search():
 
 def send_email(body):
     sender = "rellaramu769@gmail.com"
-    receiver = "bhooshrajusandhyarani@gmail.com"
-    password = os.getenv("EMAIL_PASSWORD")
+    receiver = "rellaramu1818@gmail.com"
+    password ="moksmpndczbvzgqy"        
+    # os.getenv("EMAIL_PASSWORD")
 
     msg = MIMEText(body)
     msg['Subject'] = "Daily Job Listings - Health Claims"

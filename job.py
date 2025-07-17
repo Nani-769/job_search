@@ -1,6 +1,7 @@
 import schedule
 import time
 import smtplib
+import os 
 from email.mime.text import MIMEText
 from bs4 import BeautifulSoup
 import requests
@@ -30,7 +31,7 @@ def job_search():
 def send_email(body):
     sender = "rellaramu769@gmail.com"
     receiver = "bhooshrajusandhyarani@gmail.com"
-  password = "wbce ubjo fhjf xftp" # Replace with new app password
+    password = os.getenv("EMAIL_PASSWORD") 
 
     msg = MIMEText(body)
     msg['Subject'] = "Daily Job Listings - Health Claims"

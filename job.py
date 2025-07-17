@@ -5,10 +5,26 @@ import requests
 def job_search():
     url = "https://remotive.io/api/remote-jobs?category=software-dev"
     response = requests.get(url)
-    jobs = response.json().get("jobs", [])
 
+    # Debug: Check if response is valid JSON
+    if response.status_code != 200:
+        print("Failed to fetch jobs. Status code:", response.status_code)
+        print("Response body:", response.text)
+        send_email("Failed to fetch job listings today.")
+        return
+
+    try:
+        jobs_data = response.json()
+    except Exception as e:
+        print("Error decoding JSON:", e)
+        print("Raw response:", response.text)
+        send_email("Error decoding job listings from API.")
+        return
+
+    jobs = jobs_data.get("jobs", [])
     results = ""
-    for job in jobs[:10]:  # Limit to top 10 jobs
+
+    for job in jobs[:10]:
         title = job["title"]
         company = job["company_name"]
         link = job["url"]
@@ -23,7 +39,7 @@ def job_search():
 def send_email(body):
     sender = "rellaramu769@gmail.com"
     receiver = "rellaramu1818@gmail.com"
-    password = "moksmpndczbvzgqy"  # Consider storing this in an environment variable for safety
+    password = "moksmpndczbvzgqy"  # Store securely
 
     msg = MIMEText(body)
     msg['Subject'] = "Daily Job Listings - Developer Jobs"
@@ -34,5 +50,5 @@ def send_email(body):
         server.login(sender, password)
         server.send_message(msg)
 
-# Call the function
+# Run the job search
 job_search()

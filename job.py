@@ -6,7 +6,7 @@ import requests
 
 def job_search():
     # query = "1 year experience OR entry level insurance health claims OR health claim executive site:linkedin.com/jobs OR site:angel.co OR site:indeed.com"
-query = "developer job with 2+ years experience site:linkedin.com/jobs OR site:angel.co OR site:indeed.com"
+    query = "developer job with 2+ years experience site:linkedin.com/jobs OR site:angel.co OR site:indeed.com"
     url = f"https://www.google.com/search?q={query}"
     headers = {'User-Agent': 'Mozilla/5.0'}
 

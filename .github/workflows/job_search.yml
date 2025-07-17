@@ -1,0 +1,30 @@
+name: Daily Job Search Email
+
+on:
+  schedule:
+    # Run at 6:30 AM UTC = 12:00 PM IST
+    - cron: '30 6 * * *'
+  workflow_dispatch:  # Optional: lets you run it manually too
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run job_search.py
+        env:
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        run: |
+          python job_search.py

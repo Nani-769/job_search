@@ -28,9 +28,9 @@ def job_search():
         send_email("No job listings found today.")
 
 def send_email(body):
-    sender = "rellaramu769@gmail.com" 
-password = "wbce ubjo fhjf xftp"
-receiver = "bhooshrajusandhyarani@gmail.com"   # Replace with new app password
+    sender = "rellaramu769@gmail.com"
+    receiver = "bhooshrajusandhyarani@gmail.com"
+    password = "your_new_app_password_here"  # Replace with new app password
 
     msg = MIMEText(body)
     msg['Subject'] = "Daily Job Listings - Health Claims"
@@ -41,7 +41,8 @@ receiver = "bhooshrajusandhyarani@gmail.com"   # Replace with new app password
         server.login(sender, password)
         server.send_message(msg)
 
-schedule.every().day.at("12:00").do(job_search)
+# Scheduled for 06:30 UTC (which is 12:00 PM IST)
+schedule.every().day.at("06:30").do(job_search)
 
 while True:
     schedule.run_pending()
